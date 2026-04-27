@@ -535,11 +535,9 @@ function getContentType(ext) {
   return map[ext] || 'application/octet-stream';
 }
 
-// Solo iniciar servidor si no está en Vercel (entorno local)
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(`\n✅ YTDL App corriendo en → http://localhost:${PORT}\n`);
-  });
-}
+// Iniciar servidor (funciona en local y en Render)
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n✅ YTDL App corriendo en → http://localhost:${PORT}\n`);
+});
 
 module.exports = app;
