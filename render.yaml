@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ytdl-app
+    runtime: node
+    buildCommand: |
+      npm install
+      pip3 install yt-dlp || pip install yt-dlp || echo "yt-dlp ya instalado"
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    plan: free
+    autoDeploy: true
